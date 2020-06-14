@@ -38,6 +38,30 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "237a5ed80e274dbc66f86bd59c1e25edc039660be53194b5fe0a482e0f2612ea"
 
 [[package]]
+name = "proc-macro-hack"
+version = "0.5.16"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7e0456befd48169b9f13ef0f0ad46d492cf9d2dbb918bcf38e01eed4ce3ec5e4"
+
+[[package]]
+name = "proc-macro2"
+version = "1.0.18"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "beae6331a816b1f65d04c45b078fd8e6c93e8071771f41b8163255bbd8d7c8fa"
+dependencies = [
+ "unicode-xid",
+]
+
+[[package]]
+name = "quote"
+version = "1.0.7"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "aa563d17ecb180e500da1cfd2b028310ac758de548efdd203e18f283af693f37"
+dependencies = [
+ "proc-macro2",
+]
+
+[[package]]
 name = "rand"
 version = "0.7.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -79,12 +103,61 @@ dependencies = [
 ]
 
 [[package]]
+name = "random-number"
+version = "0.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2af9f008ccc201f203d6c95c330a3aecbd0467f4904f68e7c0781b3441a43a82"
+dependencies = [
+ "proc-macro-hack",
+ "rand",
+ "random-number-macro-impl",
+]
+
+[[package]]
+name = "random-number-macro-impl"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1c6ddf08a9b4ca6f98d04b23bdf5dd4a6d89d04d2aa6f546e6341fde19d9e5e5"
+dependencies = [
+ "proc-macro-hack",
+ "quote",
+ "syn",
+]
+
+[[package]]
+name = "random-pick"
+version = "1.2.9"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "23f03052bdf3ac4dccdebdc0142e7129904ef6c1fcf6b72f4959da6ca3a86792"
+dependencies = [
+ "random-number",
+]
+
+[[package]]
 name = "rustmusic"
 version = "0.1.0"
 dependencies = [
  "fluidsynth",
  "rand",
+ "random-pick",
 ]
+
+[[package]]
+name = "syn"
+version = "1.0.31"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b5304cfdf27365b7585c25d4af91b35016ed21ef88f17ced89c7093b43dba8b6"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "unicode-xid",
+]
+
+[[package]]
+name = "unicode-xid"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "826e7639553986605ec5979c7dd957c7895e93eabed50ab2ffa7f6128a75097c"
 
 [[package]]
 name = "wasi"
